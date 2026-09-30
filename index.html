@@ -1,0 +1,283 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriGuide | Smart Agriculture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">🌱 AgriGuide</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#seeds">Seeds</a></li>
+                <li><a href="#products">Fertilizers & Pesticides</a></li>
+                <li><a href="#scanner">Crop Scanner</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+            <p class="small-title">SMART AGRICULTURE</p>
+
+            <h1>Grow Better.<br>
+                <span>Farm Smarter.</span>
+            </h1>
+
+            <p>
+                Your digital farming companion for crops, seeds,
+                fertilizers, pesticides and crop health.
+            </p>
+
+            <!-- Search -->
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search crops, seeds, diseases..."
+                >
+                <button onclick="searchContent()">🔍 Search</button>
+            </div>
+
+            <div id="searchResult"></div>
+        </div>
+
+        <div class="hero-image">
+            🌾
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features">
+
+        <div class="feature-card">
+            <div class="icon">🌱</div>
+            <h3>Seeds</h3>
+            <p>Explore suitable seeds and crop varieties.</p>
+            <a href="#seeds">Explore →</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">🧪</div>
+            <h3>Fertilizers</h3>
+            <p>Learn about nutrients and fertilizer management.</p>
+            <a href="#products">Explore →</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">🐛</div>
+            <h3>Pesticides</h3>
+            <p>Identify common pests and learn management options.</p>
+            <a href="#products">Explore →</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">📷</div>
+            <h3>Crop Scanner</h3>
+            <p>Upload a crop image to analyze its health.</p>
+            <a href="#scanner">Scan →</a>
+        </div>
+
+    </section>
+
+
+    <!-- Seeds Section -->
+    <section id="seeds" class="section">
+
+        <div class="section-title">
+            <p>DISCOVER</p>
+            <h2>🌱 Seeds & Crops</h2>
+        </div>
+
+        <div class="crop-grid">
+
+            <div class="crop-card">
+                <div class="crop-image">🌾</div>
+                <h3>Rice</h3>
+                <p>Explore rice varieties and growing information.</p>
+                <button onclick="showInfo('Rice')">View Details</button>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-image">🌽</div>
+                <h3>Maize</h3>
+                <p>Learn about maize varieties and cultivation.</p>
+                <button onclick="showInfo('Maize')">View Details</button>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-image">🌶️</div>
+                <h3>Chilli</h3>
+                <p>Information about chilli cultivation.</p>
+                <button onclick="showInfo('Chilli')">View Details</button>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-image">🍅</div>
+                <h3>Tomato</h3>
+                <p>Explore tomato varieties and crop care.</p>
+                <button onclick="showInfo('Tomato')">View Details</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Fertilizer and Pesticide Section -->
+    <section id="products" class="products-section">
+
+        <div class="section-title">
+            <p>PROTECT & NOURISH</p>
+            <h2>🧪 Fertilizers & Pesticides</h2>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card fertilizer">
+                <div class="product-icon">🌿</div>
+                <h3>Fertilizers</h3>
+
+                <p>
+                    Understand essential plant nutrients,
+                    fertilizer types and responsible application.
+                </p>
+
+                <button onclick="showProductInfo('fertilizer')">
+                    Learn More
+                </button>
+            </div>
+
+            <div class="product-card pesticide">
+                <div class="product-icon">🛡️</div>
+                <h3>Pesticides</h3>
+
+                <p>
+                    Learn about common crop pests and
+                    integrated pest management approaches.
+                </p>
+
+                <button onclick="showProductInfo('pesticide')">
+                    Learn More
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Crop Scanner -->
+    <section id="scanner" class="scanner-section">
+
+        <div class="scanner-content">
+
+            <div class="section-title">
+                <p>AI AGRICULTURE</p>
+                <h2>📷 Crop Health Scanner</h2>
+            </div>
+
+            <p>
+                Upload a picture of a crop leaf to begin
+                a crop-health analysis.
+            </p>
+
+            <div class="upload-box">
+
+                <div class="upload-icon">📸</div>
+
+                <h3>Upload Crop Image</h3>
+
+                <p>JPG, JPEG or PNG</p>
+
+                <input
+                    type="file"
+                    id="cropImage"
+                    accept="image/*"
+                    onchange="previewImage(event)"
+                >
+
+                <label for="cropImage" class="upload-button">
+                    Choose Image
+                </label>
+
+                <img id="preview" alt="Crop preview">
+
+                <button
+                    id="scanButton"
+                    class="scan-button"
+                    onclick="scanCrop()"
+                    style="display:none;"
+                >
+                    🔍 Analyze Crop
+                </button>
+
+                <div id="scanResult"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Weather -->
+    <section class="weather-section">
+
+        <div>
+            <p class="small-title">FARMER'S CORNER</p>
+            <h2>🌦️ Weather Matters</h2>
+
+            <p>
+                Weather information can help farmers plan
+                irrigation, sowing and crop protection activities.
+            </p>
+        </div>
+
+        <div class="weather-card">
+            <div class="weather-icon">☀️</div>
+            <div>
+                <h3>Today's Weather</h3>
+                <p>Weather API can be connected here.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-logo">
+            🌱 AgriGuide
+        </div>
+
+        <p>
+            Smart technology for better agriculture.
+        </p>
+
+        <p class="copyright">
+            © 2026 AgriGuide
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
